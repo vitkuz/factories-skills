@@ -1,6 +1,6 @@
 ---
 name: feature-factory
-description: "Builds any feature the user asks for in an AWS project laid out as repos/back, repos/front, repos/tools and repos/docs with its spec in docs/context, back first: brief, parallel scouting, questions, an approved plan, spec first, then implement, deploy (dev, automatic, stops on danger) and test the back until it works, recording the API as built; then build the front locally against it, test it in a browser (fixing front or back), deploy the front, smoke-test, update docs, report and keep lessons. Only run it when the user invokes it by name, never on your own initiative."
+description: "Builds any feature the user asks for in an AWS project laid out as repos/back, repos/front, repos/tools and repos/docs with its spec in docs/context, back first: brief, parallel scouting, questions, an approved plan, spec first, then implement, deploy (dev, automatic, stops on danger) and test the back until it works, recording the API as built; then build the front locally against it, test it in a browser (fixing front or back), deploy the front, smoke-test, update docs, report, keep lessons, then commit and push the changes. Only run it when the user invokes it by name, never on your own initiative."
 allowed-tools: Read, Write, Glob, Task, AskUserQuestion, Bash, Skill
 ---
 
