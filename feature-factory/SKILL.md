@@ -19,9 +19,9 @@ The project-specific values are params: `tenant`, `project`, `awsAccount`
 project that runs this factory often keeps a real `.claude/skills/feature-factory/`
 of its own (install.sh then leaves it alone) that passes them, e.g.
 `feature-factory tenant=acme project=shop awsAccount=<account id> awsProfile=work $ARGUMENTS`.
-The project map the steps read first lives at `factory-data/feature-factory/project-map.md`
+The project map the steps read first lives at `factories-data/feature-factory/project-map.md`
 (template: `factories/feature-factory/knowledge/project/project-map.template.md`); the lessons
-log at `factory-data/feature-factory/lessons.md` grows with every run.
+log at `factories-data/feature-factory/lessons.md` grows with every run.
 
 If the Skill tool is unavailable, read `.claude/skills/any-factory/SKILL.md`
 and follow it with pipeline id `feature-factory`.

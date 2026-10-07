@@ -98,13 +98,13 @@ If `/<id>` is not recognised yet, start a new session.
   `"before": ["cp {{factoryPath}}/pipeline.json {{outputDir}}/pipeline.json"]`,
   `"after": ["bash {{rootPath}}/factories/scripts/ai-usage-ingest.sh {{outputDir}}"]`.
   A hook script lives in `factories/scripts/` and must work in any project (exit 0 with a note when its tool is absent).
-- **A run never writes inside `factories/` or `factories.local/`.** Anything a run keeps across runs (an insight store, a lessons log) lives at `{{rootPath}}/factory-data/{{id}}/…`; declare the path as a constant and let the steps read and append there. Listed under `knowledge`, a missing file there is only a warning.
+- **A run never writes inside `factories/` or `factories.local/`.** Anything a run keeps across runs (an insight store, a lessons log) lives at `{{rootPath}}/factories-data/{{id}}/…`; declare the path as a constant and let the steps read and append there. Listed under `knowledge`, a missing file there is only a warning.
 - **One job per step.** "and then" in a prompt = two steps.
 - **Output folders** are `{n}-{step-name}/`. `input` must be an earlier step's `output`; anything else is anchored on `{{rootPath}}` in the prompt.
 - **Events name outcomes** (`DONE`, `APPROVE`/`REVISE`), never the next step. A step that chooses names every event in its prompt.
 - **Every loop has a `max`**, usually with `onMax`; say the limit in the prompt too.
 - **Fan out** independent steps with a `target` array; they join by pointing at the same next step.
-- **`prompt`** = only what changes per run. **`system`** = who the subagent is, a few sentences. **`knowledge`** = standing reference, at `{{factoryPath}}/knowledge/`; copy a file another factory has, never point outside. A knowledge file never names a run folder, step or event. A shared factory's knowledge names no project: project facts go to params or to a file under `factory-data/`.
+- **`prompt`** = only what changes per run. **`system`** = who the subagent is, a few sentences. **`knowledge`** = standing reference, at `{{factoryPath}}/knowledge/`; copy a file another factory has, never point outside. A knowledge file never names a run folder, step or event. A shared factory's knowledge names no project: project facts go to params or to a file under `factories-data/`.
 - **`model`**: `opus` plans, builds, reviews, decides; `sonnet` researches, drafts, tests, deploys; `haiku` fetches, copies, assembles; `fable` only the step that must not be wrong. Unsure → `opus`. Human steps: none.
 - **Human steps** where taste, cost or risk matter: the question names every event in `transitions`, and the step has an `output`.
 - **Conditions** only when an event cannot express it; leave one edge unconditional.

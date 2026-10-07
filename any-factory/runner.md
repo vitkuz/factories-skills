@@ -27,7 +27,7 @@ of truth. Run each step as a subagent, follow its edges until `END`.
 | `model`       | Optional: `fable`, `opus`, `sonnet`, `haiku`. Pass exactly as the Agent tool's `model`; omitted → leave unset. |
 | `prompt`      | Task message, array of lines joined with `\n`. |
 | `system`      | Optional lines appended to the subagent's system prompt. |
-| `knowledge`   | Files whose full text you paste into the task message. A file under `{{rootPath}}/factory-data/` is the project's own run data: missing → paste nothing and say so in the task message. |
+| `knowledge`   | Files whose full text you paste into the task message. A file under `{{rootPath}}/factories-data/` is the project's own run data: missing → paste nothing and say so in the task message. |
 | `input`       | Files the step reads; you pass absolute paths. Globs allowed. |
 | `output`      | Files the subagent writes itself. Globs allowed; record the files actually produced. |
 | `workDir`     | Optional scratch folder for the step; default `outputDir`. |
@@ -169,4 +169,4 @@ ask what to change first.
 - **Follow the route the recorder returns.** A refusal (spent cap without `onMax`, false condition) stops the run; never route around it.
 - **Unknown event** → re-prompt once with the allowed list; wrong again → stop.
 - **Never skip silently.** A step that will not run is skipped with a reason.
-- **Never edit** `runner.md`, `factories/pipeline.schema.json`, `factories/state.schema.json` or any `pipeline.json` during a run. A run never writes inside `factories/` (the kit): what it keeps across runs goes to `{{rootPath}}/factory-data/<id>/`.
+- **Never edit** `runner.md`, `factories/pipeline.schema.json`, `factories/state.schema.json` or any `pipeline.json` during a run. A run never writes inside `factories/` (the kit): what it keeps across runs goes to `{{rootPath}}/factories-data/<id>/`.
