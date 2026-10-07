@@ -78,7 +78,7 @@ First the Zod shape (twin of `factories/pipeline.schema.json`), then the graph r
 targets exist, every step and `END` reachable, every `{{name}}` declared, every
 `knowledge` file exists, every human step has an output, loops have a `max`
 (warning). Each finding ends with its rule id, e.g. `[targets-exist]`. Rules and
-how to change them: `factories-tools/validation/README.md`.
+how to change them: `factories-tools/pipeline-validation/README.md`.
 
 ## State
 
@@ -119,7 +119,7 @@ and report; never route around it.
 - **`finished`** — nothing running or routed: call `finish`.
 
 `node $S --list-guards` prints every command and each check that can refuse it,
-in order. What they mean and how routing decides targets: `factories-tools/run-state/README.md`.
+in order. What they mean and how routing decides targets: `factories-tools/pipeline-state/README.md`.
 The shape of `state.json`: `factories/state.schema.json`.
 
 ## Run
