@@ -17,10 +17,5 @@ A literal `$0` means no id was given.
 
        node factories-tools/bin/validate.mjs     # no id: prints every id, exit 2
 
-2. **Check the workspace** — for each repository the pipeline works in, run
-   `git -C <repo> branch --show-current` and `git -C <repo> status --porcelain`.
-   Uncommitted changes → show them and ask whether to proceed. Never switch,
-   stash or discard anything.
-
-3. **Read [runner.md](runner.md) and execute the pipeline** with the
+2. **Read [runner.md](runner.md) and execute the pipeline** with the
    `name=value` overrides.
