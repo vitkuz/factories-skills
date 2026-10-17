@@ -100,7 +100,7 @@ If `/<id>` is not recognised yet, start a new session.
   A hook script lives in `factories/scripts/` and must work in any project (exit 0 with a note when its tool is absent).
 - **A run never writes inside `factories/` or `factories.local/`.** Anything a run keeps across runs (an insight store, a lessons log) lives at `{{rootPath}}/factories-data/{{id}}/…`; declare the path as a constant and let the steps read and append there. Listed under `knowledge`, a missing file there is only a warning.
 - **One job per step.** "and then" in a prompt = two steps.
-- **Output folders** are `{n}-{step-name}/`. `input` must be an earlier step's `output`; anything else is anchored on `{{rootPath}}` in the prompt.
+- **Output folders** are `{n}-{step-name}/`. `input` must be an earlier step's `output`; anything else is anchored on `{{rootPath}}` in the prompt. Never name an output `summary.md`, `report.md`, `findings.md` or `analysis.md`: a subagent's Write refuses those basenames, so prefix them (`meeting-summary.md`, `fact-check-report.md`).
 - **Events name outcomes** (`DONE`, `APPROVE`/`REVISE`), never the next step. A step that chooses names every event in its prompt.
 - **Every loop has a `max`**, usually with `onMax`; say the limit in the prompt too.
 - **Fan out** independent steps with a `target` array; they join by pointing at the same next step.

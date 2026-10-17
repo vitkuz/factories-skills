@@ -69,7 +69,7 @@ STEPS
    Have it also record, per service or module it names, the test files that
    cover it — build-backend uses that list to avoid running the whole suite.
    input:  1-fetch-ticket/ticket.md
-   output: 2-scout-backend/report.md
+   output: 2-scout-backend/backend-scout-report.md
    DONE -> plan-implementation
 
 3. scout-frontend  (general-purpose)
@@ -78,7 +78,7 @@ STEPS
    the test step will need to know what a logged-in session looks like. Same
    subagent fan-out, same file:line rule, no code.
    input:  1-fetch-ticket/ticket.md
-   output: 3-scout-frontend/report.md
+   output: 3-scout-frontend/frontend-scout-report.md
    DONE -> plan-implementation
 
    (Both scouts point at plan-implementation, so it runs once, after both.)
@@ -91,8 +91,8 @@ STEPS
    Each plan lists the files to change, in order, with the acceptance criterion
    each change serves. Anything the ticket does not ask for is listed under
    "out of scope", not planned.
-   input:  1-fetch-ticket/ticket.md, 2-scout-backend/report.md,
-           3-scout-frontend/report.md
+   input:  1-fetch-ticket/ticket.md, 2-scout-backend/backend-scout-report.md,
+           3-scout-frontend/frontend-scout-report.md
    output: 4-plan-implementation/backend-plan.md,
            4-plan-implementation/frontend-plan.md
    DONE -> build-backend
@@ -115,7 +115,7 @@ STEPS
    9-verify-backend/verification.md first, state in the changes file what
    actually went wrong, and fix that — do not start over.
    workDir: {{backend_path}}
-   input:  4-plan-implementation/backend-plan.md, 2-scout-backend/report.md
+   input:  4-plan-implementation/backend-plan.md, 2-scout-backend/backend-scout-report.md
    output: 5-build-backend/changes.md
    DONE -> confirm-deploy
 

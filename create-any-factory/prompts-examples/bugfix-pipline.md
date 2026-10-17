@@ -39,7 +39,7 @@ STEPS
    Two outcomes: FOUND when the cause is pinned to specific lines, NOT_FOUND
    when it is not. NOT_FOUND ends the run — a builder handed a guess writes a
    guess. Name both events in the prompt.
-   output: 1-scout-bug/report.md
+   output: 1-scout-bug/bug-scout-report.md
    FOUND     -> fix-bug
    NOT_FOUND -> END
 
@@ -54,7 +54,7 @@ STEPS
    do not start over.
    Write it in {{format}}.
    workDir: {{rootPath}}
-   input:  1-scout-bug/report.md
+   input:  1-scout-bug/bug-scout-report.md
    output: 2-fix-bug/changes.md
    DONE -> run-tests
 
@@ -69,7 +69,7 @@ STEPS
    the prompt. Two retries, then the run ends with the tests still red — say
    that in the prompt, and never open a PR on a red suite.
    workDir: {{rootPath}}
-   input:  2-fix-bug/changes.md, 1-scout-bug/report.md
+   input:  2-fix-bug/changes.md, 1-scout-bug/bug-scout-report.md
    output: 3-run-tests/results.md
    PASS -> open-pr
    FAIL -> fix-bug, max 2, onMax END
@@ -85,7 +85,7 @@ STEPS
    co-author. If the working tree holds unrelated modifications, leave them
    unstaged.
    Record the branch, commit and PR URL.
-   input:  2-fix-bug/changes.md, 3-run-tests/results.md, 1-scout-bug/report.md
+   input:  2-fix-bug/changes.md, 3-run-tests/results.md, 1-scout-bug/bug-scout-report.md
    output: 4-open-pr/pr.md
    DONE -> END
 

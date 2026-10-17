@@ -27,7 +27,7 @@ of truth. Run each step as a subagent, follow its edges until `END`.
 | `model`       | Optional: `fable`, `opus`, `sonnet`, `haiku`. Pass exactly as the Agent tool's `model`; omitted → leave unset. |
 | `prompt`      | Task message, array of lines joined with `\n`. |
 | `system`      | Optional lines appended to the subagent's system prompt. |
-| `knowledge`   | Files whose full text you paste into the task message. A file under `{{rootPath}}/factories-data/` is the project's own run data: missing → paste nothing and say so in the task message. |
+| `knowledge`   | Files the subagent must read in full before it starts. You pass their absolute paths, never their text. A file under `{{rootPath}}/factories-data/` is the project's own run data: missing → leave it out and say so in the task message. |
 | `input`       | Files the step reads; you pass absolute paths. Globs allowed. |
 | `output`      | Files the subagent writes itself. Globs allowed; record the files actually produced. |
 | `workDir`     | Optional scratch folder for the step; default `outputDir`. |
@@ -135,7 +135,7 @@ Validate → resolve params → `mkdir -p` outputDir → `open` + `start` →
 In this order:
 
 1. The resolved `prompt`.
-2. The full text of every `knowledge` file.
+2. The absolute path of every `knowledge` file, never its text, with "read each of these files in full before doing anything".
 3. Absolute `input` paths, with "read them".
 4. Absolute `output` paths, with "write them yourself".
 5. The allowed events (keys of `transitions`) and what each means, with "return exactly one as the last line".
