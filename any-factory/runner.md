@@ -14,6 +14,7 @@ of truth. Run each step as a subagent, follow its edges until `END`.
 | `name`, `author`, `description` | Optional, for people. |
 | `constants`   | Fixed values. Always starts with `rootPath: "cwd"`, `skillPath: "."`, `homePath: "~"`. |
 | `params`      | Runtime inputs with defaults; `name=value` arguments override them (a name given twice: the last value wins). Empty default = ask the user. |
+| `paramsInfo`  | Optional UI metadata for Factory Studio's start form (description, input type, options per param). You ignore it. |
 | `hooks`       | `before` / `after` shell commands. You run them from `rootPath`. |
 | `outputDir`   | Run folder, e.g. `{{rootPath}}/run/{{id}}/{{slug}}-{{date}}`. |
 | `START`       | Entry step(s), an array. |
