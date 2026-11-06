@@ -126,10 +126,41 @@ The shape of `state.json`: `factories/state.schema.json`.
 ## Run
 
 Validate → resolve params → `mkdir -p` outputDir → `open` + `start` →
-`hooks.before` → steps from `START` → `hooks.after` → `finish` → report.
+`hooks.before` → steps from `START` → `hooks.after` → improvements → `finish` → report.
 
 - **`hooks.before`** — you run them from `rootPath`, in order; a failure stops the run before any subagent.
 - **`hooks.after`** — at `END`, succeeded or failed; a failure is reported, not fatal.
+
+### Improvements
+
+At `END`, after `hooks.after`, succeeded or failed — you write it yourself, no subagent: you saw the
+whole run. Read what you need from the run folder: `state.json` (passes, REVISE loops, caps, fails,
+durations), `cost.json`, every review / verify / edit report, the final report's open questions.
+
+Write `{{outputDir}}/improvements.md` and copy it to
+`{{rootPath}}/factories-data/<id>/improvements/<run folder name>.md`. Read the earlier files there
+first; a problem already listed in one of them is marked **повтор** with the run it came from.
+
+```markdown
+# Improvements — <id> · <run folder name>
+
+Итог: <one or two sentences: how the run went, the one fix that matters most>
+
+## Что сработало
+- <step>: <what worked and why; keep it, don't break it>
+
+## Что пошло не так
+1. <step> · <symptom with evidence: file, pass, quote> [повтор: <run>]
+
+## Что поправить
+1. <file to change: pipeline.json step / knowledge file> — <what exactly to change>
+   - Отвечает на: <symptom numbers>
+   - Сработало, если: <what the next run shows>
+   - Уверенность: high / medium / low
+```
+
+Only facts from this run's files; no fix without a symptom it answers. Language: the run's
+`language` param, else the user's. Never edit the factory during the run — proposals only.
 
 ### Subagent task message
 
@@ -157,6 +188,7 @@ ask what to change first.
 ### Report
 
 - The run folder and the deliverable files.
+- The path of `improvements.md` and its top fix in one line.
 - The event that ended the run; if it is not a success, say so plainly.
 - Any cap that changed the route, any step that failed.
 - Every skipped step and why.
